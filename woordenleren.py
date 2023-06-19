@@ -108,7 +108,7 @@ def opslaan(flijst, naam):
         savestring = savestring.rstrip("\n")
         with open(naam+".wrd", "w") as file:
             file.write(savestring)
-        return True
+        return True, [x.split(".")[0] for x in listdir() if "." in x and x.split(".")[1] == "wrd"]
     else:
         scherm(["kan geen lege lijst opslaan"])
         sleep(1)
@@ -143,7 +143,7 @@ def main():
         elif keuze[0] == "d" and len(keuze) > 1:#delete
             lijst = verwijder(keuze[1], lijst)
         elif keuze[0] == "s":#save
-            saved = opslaan(lijst, current_lijst)
+            saved, lijstlijst = opslaan(lijst, current_lijst)
         elif keuze[0] == "26951":#geheimpje en eigenlijk niet meer in gebruik door l
             scherm(lijst.items())
             pauze()
