@@ -123,12 +123,12 @@ def main():
     keuze = [1,2,3]
     lijst = dictmaker(current_lijst)
     CLR = "cls" #verander dit als je apple hebt naar "clear"
-    menu = lambda : ["geselecteerde lijst:",f"    {current_lijst}","","kies:","    •o om jouw lijst te overhoren(niet af)","    •v <woord> om een woord te vertalen","    •l om jouw lijst te tonen","    •ll voor een lijst van lijsten","    •k <naam> om een lijst te kiezen","    •n <naam> voor een nieuwe lijst","    •t <woord> <vetaling> om woorden toe te voegen aan je lijst","    •d <woord> om een woord te verwijderen" ,"    •s om je lijst op te slaan","    •q om het programma af te sluiten"]
+    menu = lambda : ["geselecteerde lijst:",f"    {current_lijst}","","kies:","    •o om jouw lijst te overhoren","    •v <woord> om een woord te vertalen","    •l om jouw lijst te tonen","    •ll voor een lijst van lijsten","    •k <naam> om een lijst te kiezen","    •n <naam> voor een nieuwe lijst","    •t <woord> <vetaling> om woorden toe te voegen aan je lijst","    •d <woord> om een woord te verwijderen" ,"    •s om je lijst op te slaan","    •q om het programma af te sluiten"]
     while keuze[0] != "q":
         system(CLR)
         if keuze[0] == "o":#overhoren
             lijst = overhoren(lijst, CLR)
-        elif keuze[0] == "v":#vertaal
+        elif keuze[0] == "v" and len(keuze) > 1:#vertaal
             vertaal(keuze[1], lijst)
         elif keuze[0] == "l":#lijst tonen
             lijstprint(lijst)
