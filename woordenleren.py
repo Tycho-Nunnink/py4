@@ -20,13 +20,12 @@ def langscherm(inhoud):
         print(f"| {str(i):<{SCHERMBREEDTE-3}}|")
     print(f"|{' '*(SCHERMBREEDTE-2)}|\n{'='*SCHERMBREEDTE}")
 
-def dictmaker(lijstnaam:str):
+def dictmaker(lijstnaam):
     dictionary = {}
-    file = open(lijstnaam + ".wrd", "r")
-    for i in file.read().split("\n"):
-        woord1, woord2 = i.split("\t")
-        dictionary[woord1] = woord2
-    file.close()
+    with open(lijstnaam + ".wrd", "r") as file:
+        for i in file:
+            woord1, woord2 = i.strip("\n").split("\t")
+            dictionary[woord1] = woord2
     return dictionary
 
 def pauze():
@@ -69,7 +68,7 @@ def lijstprint(flijst):
     pauze()
 
 def lijstlijstprint(flijstlijst):
-    langscherm(["je hebt keuze uit:"] + [f"   •{x}" for x in flijstlijst])
+    langscherm(["je hebt keuze uit:"] + [f"    •{x}" for x in flijstlijst])
     pauze()
 
 def kies(fkeuze, flijstlijst, fcurrent_lijst, flijst):#werkt nog niet moet lijstlijst nog maken
